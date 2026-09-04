@@ -10,6 +10,8 @@ This is the .NET implementation of the FoodFlow learning project. It keeps the A
 
 The backend is divided into `Data`, `Models`, `Services`, and feature-focused `Endpoints`. Critical rules cover role and ownership authorization, one-restaurant carts, price snapshots, coupon calculations, order transitions, mock payments, delivery assignment, reviews, notifications, and role-specific dashboards.
 
+For port assignments, daily startup steps, architecture notes, test accounts, and troubleshooting, see [docs/PROJECT_REFERENCE.md](docs/PROJECT_REFERENCE.md).
+
 ## Prerequisites
 
 - .NET 8 SDK
