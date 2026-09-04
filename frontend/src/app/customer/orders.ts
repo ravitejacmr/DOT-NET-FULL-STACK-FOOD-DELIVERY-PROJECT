@@ -1,0 +1,7 @@
+import { Component, OnInit, signal } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Order } from '../core/models/models';
+import { ApiService } from '../core/services/api.service';
+@Component({imports:[DatePipe,RouterLink],template:`<section class="page-hero small"><div class="container"><span class="eyebrow">ORDER HISTORY</span><h1>My orders</h1></div></section><section class="section container"><div class="panel"><div class="tabs"><button [class.active]="filter===''" (click)="setFilter('')">All</button><button [class.active]="filter==='delivered'" (click)="setFilter('delivered')">Delivered</button><button [class.active]="filter==='pending'" (click)="setFilter('pending')">Pending</button></div>@for(o of orders();track o.id){<a class="order-row" [routerLink]="['/customer/orders',o.id]"><div><b>{{o.restaurant_name}}</b><small>{{o.order_number}} · {{o.created_at|date:'medium'}}</small></div><span class="badge" [class]="o.status">{{o.status_label}}</span><b>₹{{o.grand_total}}</b></a>}@empty{<div class="empty compact">No orders found.</div>}</div></section>`})
+export class OrdersComponent implements OnInit{orders=signal<Order[]>([]);filter='';constructor(private api:ApiService){}ngOnInit(){this.load();}setFilter(v:string){this.filter=v;this.load();}load(){this.api.orders(this.filter?{status:this.filter}:{}).subscribe(v=>this.orders.set(v.results));}}

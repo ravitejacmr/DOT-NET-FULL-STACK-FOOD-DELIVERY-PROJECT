@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{D73C254F-A071-49FD-A087-A45B1235C854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9FD0D939-6D1F-4B99-ACBF-BEBD4B906115}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodFlow.Api", "backend\src\FoodFlow.Api\FoodFlow.Api.csproj", "{60FF926C-12D8-4311-897B-AFD5E25864F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60FF926C-12D8-4311-897B-AFD5E25864F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60FF926C-12D8-4311-897B-AFD5E25864F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60FF926C-12D8-4311-897B-AFD5E25864F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60FF926C-12D8-4311-897B-AFD5E25864F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9FD0D939-6D1F-4B99-ACBF-BEBD4B906115} = {D73C254F-A071-49FD-A087-A45B1235C854}
+		{60FF926C-12D8-4311-897B-AFD5E25864F0} = {9FD0D939-6D1F-4B99-ACBF-BEBD4B906115}
+	EndGlobalSection
+EndGlobal

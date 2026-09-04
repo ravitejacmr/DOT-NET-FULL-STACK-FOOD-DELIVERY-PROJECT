@@ -1,0 +1,6 @@
+import { Component, OnInit, signal } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { AppNotification } from '../core/models/models';
+import { ApiService } from '../core/services/api.service';
+@Component({imports:[DatePipe],template:`<section class="page-hero small"><div class="container"><span class="eyebrow">STAY UPDATED</span><h1>Notifications</h1></div></section><section class="section narrow"><div class="panel"><div class="section-head"><h2>Latest updates</h2><button class="link-button" (click)="allRead()">Mark all read</button></div>@for(n of items();track n.id){<button class="notification" [class.unread]="!n.is_read" (click)="read(n)"><i>{{n.notification_type==='payment'?'₹':'●'}}</i><div><b>{{n.title}}</b><p>{{n.message}}</p><small>{{n.created_at|date:'medium'}}</small></div></button>}@empty{<div class="empty compact">No notifications.</div>}</div></section>`})
+export class NotificationsComponent implements OnInit{items=signal<AppNotification[]>([]);constructor(private api:ApiService){}ngOnInit(){this.load();}load(){this.api.notifications().subscribe(v=>this.items.set(v.results));}read(n:AppNotification){if(!n.is_read)this.api.markRead(n.id).subscribe(()=>{n.is_read=true;this.items.update(v=>[...v]);});}allRead(){this.api.markAllRead().subscribe(()=>this.load());}}

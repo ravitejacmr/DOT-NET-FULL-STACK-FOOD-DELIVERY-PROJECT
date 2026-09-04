@@ -1,0 +1,6 @@
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+@Component({imports:[RouterLink],template:`<section class="page-hero"><div class="container"><span class="eyebrow">FOODFLOW</span><h1>{{title}}</h1><p>{{text}}</p><a routerLink="/restaurants" class="btn">Explore restaurants</a></div></section><section class="section container prose"><h2>Made for real life</h2><p>FoodFlow connects customers, independent restaurants and delivery partners in one transparent experience. Every status update comes from the live order workflow, and every review is linked to a completed order.</p><div class="steps"><div><span>✓</span><b>Trusted kitchens</b><p>Restaurant details, menus and availability in real time.</p></div><div><span>✓</span><b>Clear pricing</b><p>Tax, discounts and delivery fees before checkout.</p></div><div><span>✓</span><b>Human support</b><p>Reach us at hello@foodflow.local.</p></div></div></section>`})
+export class InfoComponent{@Input() title='About FoodFlow';@Input() text='Better local food delivery, built around clarity and care.';}
+@Component({imports:[RouterLink],template:`<section class="section container empty"><div>🍽️</div><h1>Page not found</h1><p>The page you ordered isn't on the menu.</p><a routerLink="/" class="btn">Back home</a></section>`})
+export class NotFoundComponent{}

@@ -1,0 +1,7 @@
+import { Component, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Payment } from '../core/models/models';
+import { ApiService } from '../core/services/api.service';
+import { ToastService } from '../core/services/toast.service';
+@Component({template:`<section class="auth-simple"><div class="form-card panel">@if(payment();as p){<span class="eyebrow">MOCK SECURE CHECKOUT</span><h1>₹{{p.amount}}</h1><p>Order {{p.order_number}}</p><div class="demo-hint">This simulator never charges a real card. Choose an outcome to test the payment workflow.</div><button class="btn full" (click)="complete(true)">Simulate successful payment</button><button class="btn ghost full" (click)="complete(false)">Simulate failed payment</button>}@else{<p>Preparing secure checkout…</p>}</div></section>`})
+export class PaymentComponent implements OnInit{payment=signal<Payment|null>(null);orderId=0;constructor(private route:ActivatedRoute,private api:ApiService,private router:Router,private toast:ToastService){}ngOnInit(){this.orderId=Number(this.route.snapshot.paramMap.get('id'));this.api.payments().subscribe(v=>this.payment.set(v.results.find(p=>p.order===this.orderId)||null));}complete(success:boolean){const p=this.payment();if(!p)return;this.api.mockPayment(p.id,success).subscribe(result=>{this.toast.show(success?'Payment successful':'Payment failed',success?'success':'error');void this.router.navigate(['/order-confirmation',result.order]);});}}
